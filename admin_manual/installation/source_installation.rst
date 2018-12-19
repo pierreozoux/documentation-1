@@ -169,10 +169,10 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 
 .. _ubuntu_installation_label:
 
-Example installation on Ubuntu 16.04 LTS server
+Example installation on Ubuntu 18.04 LTS server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 16.04 LTS server, you have two options:
+On a machine running a pristine Ubuntu 18.04 LTS server, you have two options:
 
 You can either install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
 following command in a terminal::
@@ -183,9 +183,9 @@ Or you can use .deb packages to install the required and recommended modules for
 installation, using Apache and MariaDB, by issuing the following commands in a
 terminal::
 
-    apt-get install apache2 mariadb-server libapache2-mod-php7.0
-    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl php7.0-mbstring
-    apt-get install php7.0-intl php7.0-mcrypt php-imagick php7.0-xml php7.0-zip
+    apt-get install apache2 mariadb-server libapache2-mod-php7.2
+    apt-get install php7.2-gd php7.2-json php7.2-mysql php7.2-curl php7.2-mbstring
+    apt-get install php7.2-intl php-imagick php7.2-xml php7.2-zip
 
 * This installs the packages for the Nextcloud core system.
   ``libapache2-mod-php7.0`` provides the following PHP extensions: ``bcmath bz2
