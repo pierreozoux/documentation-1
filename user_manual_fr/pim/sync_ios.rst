@@ -11,7 +11,7 @@ Agenda
 #. Selectionner Other comme type de compte.
 #. Selectionner Add CalDAV account.
 #. Pour le serveur, renseignez ``example.com/remote.php/dav/principals/users/NOM-UTILISATEUR/``
-#. ENtrez votre nom d'utilisateur et votre mot de passe.
+#. Entrez votre nom d'utilisateur et votre mot de passe.
 #. Selectioner Next.
 #. Si votre serveur ne supporte pas SSL, un avertissement sera affiché.
    Selectioner Continue.
