@@ -1,30 +1,29 @@
 ======================
-Synchronizing with iOS
+Synchroniser avec iOS
 ======================
 
-Calendar
+Agenda
 --------
 
-#. Open the settings application.
-#. Select Mail, Contacts, Calendars.
-#. Select Add Account.
-#. Select Other as account type.
-#. Select Add CalDAV account.
-#. For server, type ``example.com/remote.php/dav/principals/users/USERNAME/``
-#. Enter your user name and password.
-#. Select Next.
-#. If your server does not support SSL, a warning will be displayed.
-   Select Continue.
-#. If the iPhone is unable to verify the account information perform the
-   following steps:
+#. Ouvrir les paramètres de l'application.
+#. Selectionner Mail, Contacts, Calendars.
+#. Selectionner Add Account.
+#. Selectionner Other comme type de compte.
+#. Selectionner Add CalDAV account.
+#. Pour le serveur, renseignez ``example.com/remote.php/dav/principals/users/NOM-UTILISATEUR/``
+#. ENtrez votre nom d'utilisateur et votre mot de passe.
+#. Selectioner Next.
+#. Si votre serveur ne supporte pas SSL, un avertissement sera affiché.
+   Selectioner Continue.
+#. Si l'iPhone ne peut pas vérifier les informations du compte, poursuivez comme ceci :
 
-   -  Select OK.
-   -  Select advanced settings.
-   -  If your server does not support SSL, make sure Use SSL is set to OFF.
-   -  Change port to 80.
-   -  Go back to account information and hit Save.
+   -  Selectionner OK.
+   -  Selectionner paramètres avancés.
+   -  Si votre serveur ne supporte pas SSL, assurez vous que SSL est positionné sur OFF.
+   -  Changer le port pour 80.
+   -  Retournez sur l'information du compte et cliquez sur Save.
 
-Your calendar will now be visible in the Calendar application
+Votre agenda sera maintenant visible dans votre application Agenda.
 
 
 Contacts
