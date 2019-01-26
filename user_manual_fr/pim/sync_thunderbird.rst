@@ -1,55 +1,55 @@
 ==============================
-Synchronizing with Thunderbird
+Synchroniser avec Thunderbird
 ==============================
 
 Contacts
 --------
 
-As someone who is new to Nextcloud and new to CardBook here is what you need in excruciating pithy detail to make this work:
+Si vous êtes nouveau avec Nextcloud et Cardbook, voici ce dont vous avez besoin dans les moindres détails pour que tout fonctionne:
 
-- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (a Thunderbird contacts add-on.)
+- `Thunderbird <https://www.thunderbird.net/>`_ pour votre système si l'application n'est pas déjà installée (Linux)
+- `CardBook <https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/>`_ (une extension pour gérer les contacts dans  Thunderbird)
 
-Once you've installed CardBook and Thunderbird do like this:
+Après avoir installé CardBook et Thunderbird, opérez de cette façon:
 
-1. In the bottom left of the Contacts View (in Nextcloud contatcs) look for a little impeller symbol that looks like this:
+1. En bas à gauche de l'écran des contacts dans Nextcloud, cliquez sur le bouton suivant:
 
 .. image:: ../images/contacts_link.png
 
-which will display and URL that looks something like this:
+ce qui va afficher une URL ressemblant à celle-ci:
 https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/
 
-2. Cardbook is found in the upper right corner of Thunderbird:
+2. Cardbook se trouve en haut à droite de Thunderbird:
 
 .. image:: ../images/cardbook_icon.png
 
-3. In the Thunderbird Cardbook add-on:
+3. Dans l'extension Cardbook de Thunderbird :
 
    -  "Adressbook > New Adressbook **Remote** > Next
-   -  Fill in your information
+   -  Rensignez vos informations de connection
 
 .. image:: ../images/new_addressbook.png
 
-4. Validate your settings and click Next, then choose the name of the addressbook and click Next again.
+4. Validez vos paramètres et cliquez sur Next, choississez alors le nom de votre carnet d'adresse et cliquez sur Next à nouveau.
 
 .. image:: ../images/addressbook_name.png
 
-5. Once installed, synchronize your addressbook by clicking "Synchronize" in the top left corner of CardBook.
-You'll see your address book populate from Nextcloud!
+5. Une fois installé, synchronisez votre carnet d'adresse en cliquant sur "Synchronize" dans le coin en haut à gauche de CardBook.
+Vous allez voir votre carnet d'adresse rempli par nextcloud !
 
 .. image:: ../images/synchronize_cardbook.png
 
-The rest of the details of dealing with Thunderbird CardBook are left to the reader...
+Le reste des détails d'utilisation de Cardbook sont laissés au lecteur...
 
-Calendar
+Agenda
 --------
 
-- `Thunderbird <https://www.thunderbird.net/>`_ for your OS unless it comes with your OS distribution (Linux)
-- `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (a Thunderbird calendar add-on.)
+- `Thunderbird <https://www.thunderbird.net/>`_ pour votre système si l'application n'est pas déjà installée (Linux)
+- `Lightning <https://addons.mozilla.org/en-US/thunderbird/addon/lightning/>`_ (une extension pour gérer les agendas dans  Thunderbird)
 
-Once you've installed Lighning and Thunderbird do like this:
+Après avoir installé Lighning et Thunderbird opérez de cette façon:
 
-1. Go to your Nextcloud Calendar and click on the 3 dotted menu for the calendar that you want to synchronize which will display and URL that looks something like this:
+1. Allez dans vous agenda Nextcloud et cliquuez sur le menu "..." pour l'agenda que vous voulez synchroniser. Cela va vous afficher l'URL qui ressemble à ceci:
 https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
 2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
