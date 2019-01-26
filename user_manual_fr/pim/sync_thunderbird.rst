@@ -52,14 +52,14 @@ Après avoir installé Lighning et Thunderbird opérez de cette façon:
 1. Allez dans vous agenda Nextcloud et cliquuez sur le menu "..." pour l'agenda que vous voulez synchroniser. Cela va vous afficher l'URL qui ressemble à ceci:
 https://cloud.nextcloud.com/remote.php/dav/calendars/daniel/personal/
 
-2. Go to the calendar view in Thunderbird and right click in the calendar menu to the left (where the names of the calendars are) to add a **New Calendar**.
+2. Allez dans l'agenda de Thunderbird et cliquez droit dans le menu gauche des agendas (où le nom des agenda est affiché)pour ajouter un nouvel agenda: **New Calendar**.
 
-3. Choose **On the network**
+3. Choisissez **On the network**
 
 .. image:: ../images/new_calendar.png
 
-4. Choose **CalDAV** and fill in the missing information:
+4. Choisissez **CalDAV** et renseignez les infoirmations:
 
 .. image:: ../images/CalDAV_calendar.png
 
-The rest of the details of dealing with Thunderbird Calendar are left to the reader...
+Le reste des détails d'utilisation de Lightning est laissé au lecteur...
