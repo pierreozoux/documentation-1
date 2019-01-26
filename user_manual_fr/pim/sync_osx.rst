@@ -1,39 +1,37 @@
 ========================
-Synchronizing with macOS
+Synchroniser avec macOS
 ========================
 
-Setup your Accounts
+Installer vos comptes
 -------------------
 
-In the following steps you will add your server resources for **CalDAV** (Calendar) 
-and **CardDAV** (Contacts) to your Nextcloud.
+Dans les étapes suivantes vous allez ajouter les ressources de votre serveur pour **CalDAV** (Agenda) 
+et **CardDAV** (Contacts) à votre Nextcloud.
 
-1. Open the **system preferences** of your macOS device
+1. Ouvrir **system preferences** de votre ordinateur macOS
 
-2. Navigate to **Internet Accounts**
+2. Aller à **Internet Accounts**
 
 .. figure:: ./images/macos_1.png
 
-3. Click on **Add Other Account...** and click on **CalDAV Account** for Calendar
-   or **CardDAV Account** for Contacts.
+3. Cliquer sur **Add Other Account...** et sur **CalDAV Account** pour l'agenda ou
+**CardDAV Account** pour les contacts.
 
 .. figure:: ./images/macos_2.png
 
-.. note:: You can not setup Calendar/Contacts together. You need to setup them
-          in **separate accounts**.
+.. note:: Vous ne pouvez pas installer Agenda et Contacts sur le même compte. Vous devez les configurer dans **des comptes distincts"".
+4. Selectionner **Advanced** comme type de compte et renseignez vos identifiants:
 
-4. Select **Advanced** as Account-Type and type in your respective credentials:
-
-   **Username**: Your Nextcloud username or email
-   **Password**: Your generated App-password/token (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
-   **Server Address**: URL of your Nextcloud server (e.g. https://cloud.example.com)
-   **Server Path:** /remote.php/dav/principals/users/[your_username]
+   **Username**: Votre nom d'utilisateur Nextcloud ou adresse mail
+   **Password**: Votre mot de passe d'application (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
+   **Server Address**: l'URL de votre serveur Nextcloud (p.e. https://cloud.example.com)
+   **Server Path:** /remote.php/dav/principals/users/[votre nom d'utilisateur]
    **Port:** 443
    **Use SSL:** Yes
 
 .. figure:: ./images/macos_3.png
 
-5. Click on **Sign In**.
+5. Cliquer sur **Sign In**.
 
 **For CalDAV (Calendar):** You can now select, with which applications you want
 to use this resource. In the most cases, this will be the "Calendar" application,
