@@ -33,17 +33,13 @@ et **CardDAV** (Contacts) à votre Nextcloud.
 
 5. Cliquer sur **Sign In**.
 
-**For CalDAV (Calendar):** You can now select, with which applications you want
-to use this resource. In the most cases, this will be the "Calendar" application,
-sometimes you may also want to use it for your **Tasks and reminders**.
+**Pour CalDAV (Agenda):** Vous pouvez maintenant choisir avec quelle application utiliser cette ressource. Dans la pluspart des cas, ce sera l'application "Agenda", parfois vous pourriez aussi vouloir l'utiliser pour vos **Tâches et rappels**.
 
 .. figure:: ./images/macos_4.png
 
-Troubleshooting
+Résolution de problèmes
 ---------------
 
-- macOS does **not** support syncing CalDAV/CardDAV over non-encrypted **http://**
-  connections. Make sure you have https:// enabled and configured on server- and
-  client-side.
+- macOS **ne supporte pas** la synchronisation CalDAV/CardDAV avec des connections non cryptées **http://**. Assurez vous d'avoir la connection https:// configurée et activée sur votre serveur et votre client.
 
-- **Self-signed certificates** need to be properly set up in the macOS keychain.
+- **Les certificats autosignés** doivent être correctement configurés dans le porte clé de macOS.
