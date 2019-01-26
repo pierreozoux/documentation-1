@@ -19,7 +19,7 @@ et **CardDAV** (Contacts) à votre Nextcloud.
 
 .. figure:: ./images/macos_2.png
 
-.. note:: Vous ne pouvez pas installer Agenda et Contacts sur le même compte. Vous devez les configurer dans **des comptes distincts"".
+.. note:: Vous ne pouvez pas installer Agenda et Contacts sur le même compte. Vous devez les configurer dans **des comptes distincts**.
 4. Selectionner **Advanced** comme type de compte et renseignez vos identifiants:
 
    **Username**: Votre nom d'utilisateur Nextcloud ou adresse mail
