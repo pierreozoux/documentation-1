@@ -22,18 +22,18 @@ et **CardDAV** (Contacts) à votre Nextcloud.
 .. note:: Vous ne pouvez pas installer Agenda et Contacts sur le même compte. Vous devez les configurer dans **des comptes distincts**.
 4. Selectionner **Advanced** comme type de compte et renseignez vos identifiants:
 
-   **Username**: Votre nom d'utilisateur Nextcloud ou adresse mail
-   **Password**: Votre mot de passe d'application (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
-   **Server Address**: l'URL de votre serveur Nextcloud (p.e. https://cloud.example.com)
-   **Server Path:** /remote.php/dav/principals/users/[votre nom d'utilisateur]
-   **Port:** 443
-   **Use SSL:** Yes
+   - **Username**: Votre nom d'utilisateur Nextcloud ou adresse mail
+   - **Password**: Votre mot de passe d'application (`App-password/token <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_)
+   - **Server Address**: l'URL de votre serveur Nextcloud (p.e. https://cloud.example.com)
+   - **Server Path:** /remote.php/dav/principals/users/[votre nom d'utilisateur]
+   - **Port:** 443
+   - **Use SSL:** Yes
 
 .. figure:: ./images/macos_3.png
 
 5. Cliquer sur **Sign In**.
 
-**Pour CalDAV (Agenda):** Vous pouvez maintenant choisir avec quelle application utiliser cette ressource. Dans la pluspart des cas, ce sera l'application "Agenda", parfois vous pourriez aussi vouloir l'utiliser pour vos **Tâches et rappels**.
+**Pour CalDAV (Agenda):** Vous pouvez maintenant choisir avec quelle application utiliser cette ressource. Dans la pluspart des cas, ce sera l'application "Agenda", parfois vous pourriez aussi vouloir l'utiliser pour vos **"Tâches et rappels"**.
 
 .. figure:: ./images/macos_4.png
 
