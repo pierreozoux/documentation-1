@@ -3,7 +3,7 @@ L'interface web de Nextcloud
 ============================
 
 Vous pouvez vous connecter à votre serveur Nextcloud server en utilisant un navgateur Web ; 
-vous devez juste accéder à l'URL de votre serveur Nexcloud et saisir votre dientifiant et 
+vous devez juste accéder à l'URL de votre serveur Nexcloud et saisir votre identifiant et 
 votre mot de passe. Les navigateurs Web supportés sont :
 
 * **Mozilla Firefox** 14+
