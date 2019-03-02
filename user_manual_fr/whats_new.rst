@@ -1,6 +1,6 @@
-===============================================
-Quoi de neuf pour les utilisateurs de Nextcloud
-===============================================
+=========================================================
+Quoi de neuf pour les utilisateurs de Nextcloud |version|
+=========================================================
 
 1. Un moyen plus simple de sélectionner une nouvelle application
 
