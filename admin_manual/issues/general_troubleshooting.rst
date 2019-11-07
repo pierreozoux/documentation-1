@@ -70,8 +70,7 @@ enabled. Edit :file:`config/config.php` and change ``'debug' => false,`` to
 
 For JavaScript issues you will also need to view the javascript console. All 
 major browsers have developer tools for viewing the console, and you 
-usually access them by pressing F12. For Firefox we recommend to installing 
-the `Firebug extension <https://getfirebug.com/>`_.
+usually access them by pressing F12.
 
 .. note:: The logfile of Nextcloud is located in the data directory 
    ``nextcloud/data/nextcloud.log``.
@@ -272,11 +271,11 @@ document root of your Web server and add the following lines::
 
     <IfModule mod_rewrite.c>
       RewriteEngine on
-      RewriteRule ^/\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
-      RewriteRule ^/\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
-      RewriteRule ^/\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
-      RewriteRule ^/\.well-known/carddav /nextcloud/remote.php/dav/ [R=301,L]
-      RewriteRule ^/\.well-known/caldav /nextcloud/remote.php/dav/ [R=301,L]
+      RewriteRule ^\.well-known/host-meta /nextcloud/public.php?service=host-meta [QSA,L]
+      RewriteRule ^\.well-known/host-meta\.json /nextcloud/public.php?service=host-meta-json [QSA,L]
+      RewriteRule ^\.well-known/webfinger /nextcloud/public.php?service=webfinger [QSA,L]
+      RewriteRule ^\.well-known/carddav /nextcloud/remote.php/dav/ [R=301,L]
+      RewriteRule ^\.well-known/caldav /nextcloud/remote.php/dav/ [R=301,L]
     </IfModule>
 
 Make sure to change /nextcloud to the actual subfolder your Nextcloud instance is running in.

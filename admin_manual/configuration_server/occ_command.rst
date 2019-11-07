@@ -196,8 +196,9 @@ The ``app`` commands list, enable, and disable apps::
   app:check-code   check code to be compliant
   app:disable      disable an app
   app:enable       enable an app
-  app:getpath      Get an absolute path to the app directory
-  app:list         List all available apps
+  app:getpath      get an absolute path to the app directory
+  app:list         list all available apps
+  app:update       update an app or all apps 
 
 List all of your installed apps, and show whether they are 
 enabled or disabled::
@@ -240,8 +241,16 @@ You can get the full filepath to an app::
     sudo -u www-data php occ app:getpath notifications
     /var/www/nextcloud/apps/notifications
 
+To update an app, for instance Contacts::
+    
+    sudo -u www-data php occ app:update contacts 
+
+To update all apps::
+    
+    sudo -u www-data php occ app:update --all
+
 .. _background_jobs_selector_label:   
-   
+
 Background jobs selector
 ------------------------
 
@@ -765,7 +774,7 @@ Verify your app::
   sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
   
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing 
-<https://docs.nextcloud.org/server/14/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<https://docs.nextcloud.org/server/15/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 .. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
@@ -905,7 +914,7 @@ different log file path. Set your rotation by log file size in bytes with
 are ``file``, ``warning``, and ``UTC``. Available options are:
 
 * --backend [file, syslog, errorlog, systemd]
-* --level [debug, info, warning, error]
+* --level [debug, info, warning, error, fatal]
 
 .. _maintenance_commands_label:
    
@@ -984,18 +993,18 @@ Trashbin
   This command is only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
 
-The ``trashbin:cleanup`` command removes the deleted files of the specified 
-users in a space-delimited list, or all users if none are specified.
+The ``trashbin:cleanup  [--all-users] [--] [<user_id>...]`` command removes the deleted files of the specified 
+users in a space-delimited list, or all users if --all-users is specified.
 
 ::
  
  trashbin
-  trashbin:cleanup   Remove deleted files
+  trashbin:cleanup  [--all-users] [--] [<user_id>...]  Remove deleted files
   
 This example removes the deleted files of all users::  
   
-  sudo -u www-data php occ trashbin:cleanup 
-  Remove all deleted files
+  sudo -u www-data php occ trashbin:cleanup --all-users 
+  Remove all deleted files for all users
   Remove deleted files for users on backend Database
    freda
    molly

@@ -16,6 +16,8 @@ archive <https://nextcloud.com/install/>`_.
    Red Hat Enterprise Linux may need to set new rules to enable installing
    Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
 
+You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on.
+
 .. _vm_label:
 
 Installing on Windows (virtual machine)
@@ -26,14 +28,14 @@ using a virtual machine (VM). There are two options:
 
 * **Enterprise/SME appliance**
 
-Nextcloud GmbH maintains a free appliance built on the 
+Nextcloud GmbH maintains a free appliance built on the
 `Univention Corporate Server (UCS) <https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/>`_
 with easy graphical setup and web-based administration. It includes user
 management via LDAP, can replace an existing Active Directory setup and
 has optional ONLYOFFICE and Collabora Online integration, with many more applications
 available for easy and quick install.
 
-It can be installed on hardware or ran in a virtual machine using VirtualBox,
+It can be installed on hardware or run in a virtual machine using VirtualBox,
 VMWare (ESX) and KVM images.
 
 Download the the Appliance here:
@@ -49,10 +51,11 @@ offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be in
 
 The VM is made with VMware version 10 and it comes in different sizes and versions:
 
-- 40 GB (Hyper-V)
-- 500 GB (VMware & VirtualBox)
-- 1 TB (VMware & VirtualBox)
-- 2 TB (VMware & VirtualBox)
+- 40 GB (VMware, VirtualBox, Hyper-V)
+- 500 GB (VMware, VirtualBox, Hyper-V)
+- 1 TB (VMware, VirtualBox, Hyper-V)
+- 2 TB (VMware & VirtualBox, Hyper-V)
+- Custom size? Please `ask us <https://www.hanssonit.se/#contact>`_.
 
 You can find all the different version `here <https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/>`_.
 
@@ -62,7 +65,7 @@ For complete instructions and downloads see:
 - `Nextcloud VM (T&M Hansson IT) <https://www.hanssonit.se/nextcloud-vm/>`_
 
 .. note:: You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the `instructions in the README <https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps>`_.
-   
+
 .. _snaps_label:
 
 Installing via Snap packages
@@ -97,7 +100,7 @@ If you get a result, the module is present.
 
 Required:
 
-* PHP (>= 7.0, 7.1 or 7.2)
+* PHP (7.1, 7.2 or 7.3)
 * PHP module ctype
 * PHP module curl
 * PHP module dom
@@ -172,12 +175,27 @@ If ``mod_webdav`` is enabled you must disable it for Nextcloud. (See
 Example installation on Ubuntu 18.04 LTS server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 18.04 LTS server, you have two options:
+On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:
 
-You can either install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
+**Bash scripts**
+
+One of the easiest ways of insalling is to use the Nextcloud VM scripts. It's basically just two steps:
+
+1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+2. Run the script with::
+
+    sudo bash nextcloud_install_production.sh
+
+A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
+
+**Snap package**
+
+Another very easy way is to install the Nextcloud `Snap Package <http://snapcraft.io/>`_, just run the
 following command in a terminal::
 
     sudo snap install nextcloud
+
+**Debian packages**
 
 Or you can use .deb packages to install the required and recommended modules for a typical Nextcloud
 installation, using Apache and MariaDB, by issuing the following commands in a
@@ -188,12 +206,12 @@ terminal::
     apt-get install php7.2-intl php-imagick php7.2-xml php7.2-zip
 
 * This installs the packages for the Nextcloud core system.
-  ``libapache2-mod-php7.2`` provides the following PHP extensions:: 
-  
-    bcmath bz2 calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext 
-    hash iconv libxml mhash openssl pcre Phar posix Reflection session shmop SimpleXML 
-    soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx xmlreader xmlwriter zlib . 
-  
+  ``libapache2-mod-php7.2`` provides the following PHP extensions::
+
+    bcmath bz2 calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext
+    hash iconv libxml mhash openssl pcre Phar posix Reflection session shmop SimpleXML
+    soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx xmlreader xmlwriter zlib
+
   If you are planning on running additional apps, keep in mind that they might require additional
   packages.  See :ref:`prerequisites_label` for details.
 
@@ -261,31 +279,19 @@ Now make sure your system is up to date::
 
     yum update -y
 
-**Apache**::
+**Apache**
+::
 
     yum install -y httpd
 
-Create a virtualhost file and add the following content to it::
-
-    vi /etc/httpd/conf.d/nextcloud.conf
-
-    <VirtualHost *:80>
-      DocumentRoot /var/www/html/
-      ServerName  your.server.com
-
-    <Directory "/var/www/html/">
-      Require all granted
-      AllowOverride All
-      Options FollowSymLinks MultiViews
-    </Directory>
-    </VirtualHost>
+See :ref:`apache-web-server-configuration` for details.
 
 Make sure the apache web service is enabled and started::
 
     systemctl enable httpd.service
     systemctl start httpd.service
 
-**PHP**:
+**PHP**
 
 Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.::
 
@@ -299,7 +305,7 @@ Next you will need to create a few symlinks::
     ln -s /opt/rh/httpd24/root/etc/httpd/conf.d/rh-php72-php.conf /etc/httpd/conf.d/
     ln -s /opt/rh/httpd24/root/etc/httpd/conf.modules.d/15-rh-php72-php.conf /etc/httpd/conf.modules.d/
     ln -s /opt/rh/httpd24/root/etc/httpd/modules/librh-php72-php7.so /etc/httpd/modules/
-    
+
 This next symlink will give you the opportunity to be able to invoke ``php`` from anywhere in terminal, including for ``occ`` commands::
 
     ln -s /opt/rh/rh-php72/root/bin/php /usr/bin/php
@@ -317,6 +323,15 @@ Make sure the database service is enabled to start at boot time.::
     systemctl start mariadb.service
 
 After you have done this, make sure you create a database with a username and password so that Nextcloud will have access to it. In the docs, refer to the Database configuration part, specifically about MariaDB. There is a complete write-up on how to setup the database.
+
+
+**Redis**
+::
+
+    yum install -y redis
+    systemctl enable redis.service
+    systemctl start redis.service
+
 
 **Installing Nextcloud**
 
@@ -353,7 +368,7 @@ For the sake of the walk-through, we grabbed the latest version of Nextcloud in 
 Copy the content over to the root directory of your webserver. In our case, we are using apache so it will be ``/var/www/html/``::
 
     cp -R nextcloud/ /var/www/html/
-    
+
 During the install process, no data folder is created, so we will create one manually to help with the installation wizard::
 
     mkdir /var/www/html/nextcloud/data
@@ -371,27 +386,21 @@ Create a firewall rule for access to apache::
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
 
-**Redis**::
-
-    yum install -y redis
-    systemctl enable redis.service
-    systemctl start redis.service
-
 **SELinux**
 
 Again, there is an extensive write-up done on SELinux which can be found at :doc:`../installation/selinux_configuration`, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
 The following commands only refers to this tutorial::
 
-  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'
-  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'
-  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'
-  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'
-  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'
-  semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/data(/.*)?'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/config(/.*)?'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/apps(/.*)?'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.htaccess'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/.user.ini'
+    semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?'
 
-  restorecon -R '/var/www/html/nextcloud/'
+    restorecon -R '/var/www/html/nextcloud/'
 
-  setsebool -P httpd_can_network_connect on
+    setsebool -P httpd_can_network_connect on
 
 If you need more SELinux configs, refer to the above-mentioned URL, return to this tutorial.
 
@@ -403,13 +412,13 @@ Because we used ``Redis`` as a memcache, you will need a config similar to the f
 
 Example config::
 
-  'memcache.distributed' => '\OC\Memcache\Redis',
-  'memcache.locking' => '\OC\Memcache\Redis',
-  'memcache.local' => '\OC\Memcache\APCu',
-  'redis' => array(
-    'host' => 'localhost',
-    'port' => 6379,
-      ),
+    'memcache.distributed' => '\OC\Memcache\Redis',
+    'memcache.locking' => '\OC\Memcache\Redis',
+    'memcache.local' => '\OC\Memcache\APCu',
+    'redis' => array(
+      'host' => 'localhost',
+      'port' => 6379,
+    ),
 
 Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, :doc:`../index`, for detailed descriptions on how to get this done.
 
@@ -423,25 +432,45 @@ configuration so all you have to do is create a
 :file:`/etc/apache2/sites-available/nextcloud.conf` file with these lines in
 it, replacing the **Directory** and other filepaths with your own filepaths::
 
-  Alias /nextcloud "/var/www/nextcloud/"
+    Alias /nextcloud "/var/www/nextcloud/"
 
-  <Directory /var/www/nextcloud/>
-    Options +FollowSymlinks
-    AllowOverride All
+    <Directory /var/www/nextcloud/>
+      Require all granted
+      Options FollowSymlinks MultiViews
+      AllowOverride All
 
-   <IfModule mod_dav.c>
-    Dav off
-   </IfModule>
+     <IfModule mod_dav.c>
+      Dav off
+     </IfModule>
 
-   SetEnv HOME /var/www/nextcloud
-   SetEnv HTTP_HOME /var/www/nextcloud
+     SetEnv HOME /var/www/nextcloud
+     SetEnv HTTP_HOME /var/www/nextcloud
 
-  </Directory>
- 
+    </Directory>
+
 Then enable the newly created site::
 
-  a2ensite nextcloud.conf
- 
+    a2ensite nextcloud.conf
+
+
+On CentOS/RHEL, create a virtualhost :file:`/etc/httpd/conf.d/nextcloud.conf` and add the following content to it::
+
+    <VirtualHost *:80>
+      DocumentRoot /var/www/nextcloud/
+      ServerName  your.server.com
+
+      <Directory "/var/www/nextcloud/">
+        Require all granted
+        AllowOverride All
+        Options FollowSymLinks MultiViews
+
+        <IfModule mod_dav.c>
+          Dav off
+        </IfModule>
+
+      </Directory>
+    </VirtualHost>
+
 Additional Apache configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -477,7 +506,7 @@ Additional Apache configurations
 
 * Now restart Apache::
 
-     service apache2 restart
+    service apache2 restart
 
 * If you're running Nextcloud in a subdirectory and want to use CalDAV or
   CardDAV clients make sure you have configured the correct
@@ -495,18 +524,18 @@ making URLs shorter and thus prettier.
 ``mod_env`` and ``mod_rewrite`` must be installed on your webserver and the :file:`.htaccess`
 must be writable by the HTTP user. Then you can set in the :file:`config.php` two variables::
 
- 'overwrite.cli.url' => 'https://example.org/nextcloud',
- 'htaccess.RewriteBase' => '/nextcloud',
+    'overwrite.cli.url' => 'https://example.org/nextcloud',
+    'htaccess.RewriteBase' => '/nextcloud',
 
 if your setup is available on ``https://example.org/nextcloud`` or::
 
- 'overwrite.cli.url' => 'https://example.org/',
- 'htaccess.RewriteBase' => '/',
+    'overwrite.cli.url' => 'https://example.org/',
+    'htaccess.RewriteBase' => '/',
 
 if it isn't installed in a subfolder. Finally run this occ-command to update
 your .htaccess file::
 
-     sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
+    sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
 
 After each update, these changes are automatically applied to the ``.htaccess``-file.
 
@@ -523,9 +552,9 @@ Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
 the default site. Open a terminal and run::
 
-     a2enmod ssl
-     a2ensite default-ssl
-     service apache2 reload
+    a2enmod ssl
+    a2ensite default-ssl
+    service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
           plan to make your Nextcloud server publicly accessible. You might
@@ -541,9 +570,9 @@ Installation wizard
 After restarting Apache you must complete your installation by running either
 the graphical Installation Wizard, or on the command line with the ``occ``
 command. To enable this, change the ownership on your Nextcloud directories to
-your HTTP user:
+your HTTP user::
 
- chown -R www-data:www-data /var/www/nextcloud/
+    chown -R www-data:www-data /var/www/nextcloud/
 
 .. note:: Admins of SELinux-enabled distributions may need to write new SELinux
    rules to complete their Nextcloud installation; see
@@ -572,17 +601,18 @@ ini file. This can be the case, for example, for the ``date.timezone`` setting.
 **php.ini - used by the Web server:**
 ::
 
-   /etc/php/7.0/apache2/php.ini
- or
-   /etc/php/7.0/fpm/php.ini
- or ...
+    /etc/php/7.2/apache2/php.ini
+  or
+    /etc/php/7.2/fpm/php.ini
+  or ...
 
 **php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
 ::
 
-  /etc/php/7.0/cli/php.ini
+    /etc/php/7.2/cli/php.ini
 
-.. note:: Path names have to be set in respect of the installed PHP (>= 7.0, 7.1 or 7.2) as applicable.
+.. note:: Path names have to be set in respect of the installed PHP
+          (>= 7.0, 7.1, 7.2 or 7.3) as applicable.
 
 .. _php_fpm_tips_label:
 
@@ -602,8 +632,7 @@ Here are some example root paths for these ini/config files:
 +-----------------------+-----------------------+
 | Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-|                       | ``/etc/php-fpm.d/``   |
-| ``/etc/php/7.0/fpm/`` |                       |
+| ``/etc/php/7.2/fpm/`` | ``/etc/php-fpm.d/``   |
 +-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
@@ -621,18 +650,18 @@ already in the file, but commented out like this::
 Uncomment the appropriate existing entries. Then run ``printenv PATH`` to
 confirm your paths, for example::
 
-        $ printenv PATH
-        /home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
-        /sbin:/bin:/
+    $ printenv PATH
+    /home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
+    /sbin:/bin:/
 
 If any of your system environment variables are not present in the file then
 you must add them.
 
-Alternatively it is possible to use the environemt variables of your system by modifying
+Alternatively it is possible to use the environemt variables of your system by modifying::
 
-    /etc/php/7.0/fpm/pool.d/www.conf
+    /etc/php/7.2/fpm/pool.d/www.conf
 
-and uncommenting the line
+and uncommenting the line::
 
     clear_env = no
 
@@ -664,8 +693,7 @@ Other Web servers
 -----------------
 
 * :doc:`nginx`
-* `Other HTTP servers (Nextcloud) <https://github.com/nextcloud/documentation/wiki/Alternate-Web-server-notes>`_
 
 
 .. _Nextcloud VM:
-  https://github.com/nextcloud/vm
+    https://github.com/nextcloud/vm

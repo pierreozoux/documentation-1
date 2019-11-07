@@ -6,7 +6,7 @@ The node package manager ``npm`` is a widely used tool to manage JavaScript depe
 order to make the project setup easier for everybody, we recommend to follow the convention
 of typical scripts like ``build``, ``watch`` and ``test`` in the ``package.json`` file.
 
-You can find more info about this convention on blog posts like this `https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/`_.
+You can find more info about this convention on blog posts like this `<https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/>`_.
 
 npm build
 ---------
@@ -23,7 +23,7 @@ For apps that use webpack, this might look like this:
   {
     "name": "myapp",
     "scripts": {
-      "build": "webpack --progress --config webpack.prod.js"
+      "build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js"
     },
     "devDependencies": {
       "webpack": "^4.26.1",
@@ -33,24 +33,25 @@ For apps that use webpack, this might look like this:
 
 You can then run ``npm build`` in your app's root directory to invoke the build process.
 
-See the `npm-build docs https://docs.npmjs.com/cli/build`_ for more info.
+See the `npm-build docs <https://docs.npmjs.com/cli/build>`_ for more info.
 
-npm run watch
--------------
+npm run dev, npm run watch
+--------------------------
 
 Since building the release version of JavaScript scripts can be slow, apps often have a dedicated
-build step for development that builds faster and enables debug output. Additionally, it instructs
+build step for development that builds faster and enables debug output. Additionally, it can instructs
 the bundler to listen to file changes and (incrementally) rebuild the project.
 
-This command should be added to ``package.json`` as ``watch`` script:
+This command should be added to ``package.json`` as ``dev``  and ``watch`` script:
 
 .. code-block:: json
 
   {
     "name": "myapp",
     "scripts": {
-      "build": "webpack --progress --config webpack.prod.js",
-      "watch": "webpack --progress --config webpack.dev.js --watch"
+      "build": "NODE_ENV=production webpack --progress --hide-modules --config webpack.prod.js",
+      "dev": "NODE_ENV=development webpack --progress --config webpack.dev.js",
+      "watch": "NODE_ENV=development webpack --progress --watch --config webpack.dev.js"
     },
     "devDependencies": {
       "webpack": "^4.26.1",
@@ -58,7 +59,7 @@ This command should be added to ``package.json`` as ``watch`` script:
     }
   }
 
-The development build is invoked with ``npm run dev``.
+The development build is invoked with ``npm run dev`` or if you want to leave the process running and update on every change made to the source files, ``npm run watch``.
 
 npm test
 --------
@@ -74,7 +75,7 @@ test command(s) like this:
     }
   }
 
-More info about this command can be found in the `npm-test documentation https://docs.npmjs.com/cli/test`_.
+More info about this command can be found in the `npm-test documentation <https://docs.npmjs.com/cli/test>`_.
 
 npm run lint (optional)
 -----------------------

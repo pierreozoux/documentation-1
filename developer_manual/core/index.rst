@@ -11,6 +11,4 @@ Please make sure you have set up a :ref:`devenv`.
 
    translation
    unit-testing
-   theming
    externalapi
-   ocs-share-api

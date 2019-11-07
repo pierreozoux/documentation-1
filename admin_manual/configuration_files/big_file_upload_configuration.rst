@@ -85,10 +85,6 @@ is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your n
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the tmp partition of your system.
 
-For more info how to configure nginx to raise the upload limits see also `this
-<https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
-wiki entry.
-
 .. note:: Make sure that ``client_body_temp_path`` points to a partition with 
    adequate space for your upload file size, and on the same partition as
    the ``upload_tmp_dir`` or ``tempdirectory`` (see below). For optimal 
@@ -140,24 +136,5 @@ make sure it is not too
 low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
-
-Configuring upload limits within the GUI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If all prerequisites described in this documentation are in place an admin can change the
-upload limits on demand by using the ``File handling`` input box within the administrative
-backend of Nextcloud.
-
-.. figure:: images/admin_filehandling-1.png
-
-Depending on your environment you might get an insufficient permissions message shown for
-this input box.
-
-.. figure:: images/admin_filehandling-2.png
-
-To be able to use this input box you need to make sure that:
-
-* your Web server is able to use the ``.htaccess`` file shipped by Nextcloud (Apache only)
-* the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 

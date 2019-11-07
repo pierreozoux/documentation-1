@@ -2,7 +2,7 @@
 Logging
 =======
 
-Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog.
+Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose between using the Nextcloud log or your syslog. If additional audit information is required, you can optionally activate the **admin_audit** app, which by default generates a separate audit.log file in the data directory.
 
 Log level
 ---------
@@ -54,5 +54,16 @@ All log information will be sent to your default syslog daemon.
     "logfile" => "",
     "loglevel" => "3",
 
+Admin audit log
+---------------
+
+If required, the name and path of the audit log file can be customized by using the following command:
+
+::
+
+    occ config:app:set admin_audit logfile --value=/var/log/nextcloud/audit.log
+
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
+
+Find detailed documentation on auditable events for enterprises in our `customer portal <https://portal.nextcloud.com/article/using-the-audit-log-44.html>`_.

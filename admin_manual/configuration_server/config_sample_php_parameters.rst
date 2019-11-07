@@ -361,19 +361,6 @@ Defaults to ``core/skeleton`` in the Nextcloud directory.
 
 ::
 
-	'user_backends' => array(
-		array(
-			'class' => 'OC_User_IMAP',
-			'arguments' => array('{imap.gmail.com:993/imap/ssl}INBOX')
-		)
-	),
-
-The ``user_backends`` app (which needs to be enabled first) allows you to
-configure alternate authentication backends. Supported backends are:
-IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
-
-::
-
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
 If your user backend does not allow password resets (e.g. when it's a
@@ -788,7 +775,6 @@ Supported values:
   - ``daily``
   - ``beta``
   - ``stable``
-  - ``production``
 
 ::
 
@@ -1327,11 +1313,12 @@ for more information.
 	'redis.cluster' => [
 		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
 			'localhost:7000',
-			'localhost:7001'
+			'localhost:7001',
 		],
 		'timeout' => 0.0,
 		'read_timeout' => 0.0,
-		'failover_mode' => \RedisCluster::FAILOVER_ERROR
+		'failover_mode' => \RedisCluster::FAILOVER_ERROR,
+		'password' => '', // Optional, if not defined no password will be used.
 	],
 
 Connection details for a Redis Cluster
@@ -1354,6 +1341,9 @@ scheduled to a slave that is not fully synchronized with the connected master
 which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
+
+Authentication works with phpredis version 4.2.1+. See
+https://github.com/phpredis/phpredis/commit/c5994f2a42b8a348af92d3acb4edff1328ad8ce1
 
 ::
 
@@ -1637,6 +1627,8 @@ Defaults to ``array('.htaccess')``
 
 Define a default folder for shared files and folders other than root.
 
+Changes to this value will only have effect on new shares.
+
 Defaults to ``/``
 
 ::
@@ -1679,6 +1671,18 @@ EXPERIMENTAL: option whether to include external storage in quota
 calculation, defaults to false.
 
 Defaults to ``false``
+
+::
+
+	'external_storage.auth_availability_delay' => 1800,
+
+When an external storage is unavailable for some reasons, it will be flagged
+as such for 10 minutes. When the trigger is a failed authentication attempt
+the delay is higher and can be controlled with this option. The motivation
+is to make account lock outs at Active Directories (and compatible) more
+unlikely.
+
+Defaults to ``1800`` (seconds)
 
 ::
 
